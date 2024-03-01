@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 // Conexão com o banco de dados SQLite
 const db = new sqlite3.Database('pedidos.db');
