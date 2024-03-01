@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Pedidos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Consulta de Pedidos</h1>
+    <div id="pedidos"></div>
+
+    <a href="index.html"><button type="button">Voltar para Registros</button></a>
+
+    <script src="scripts.js"></script>
+    <script>
+        fetch('/pedidos')
+            .then(response => response.json())
+            .then(data => {
+                const pedidosDiv = document.getElementById('pedidos');
+                data.forEach(pedido => {
+                    pedidosDiv.innerHTML += `<p>ID: ${pedido.id} | Cliente: ${pedido.cliente} | Pedido: ${pedido.pedido} | Telefone: ${pedido.telefone} | Valor: ${pedido.valor}</p>`;
+                });
+            })
+            .catch(error => console.error('Erro ao obter os pedidos:', error));
+    </script>
+</body>
+</html>
+
